@@ -1,0 +1,11 @@
+String titulo1='Transformando Ideas en Experiencias Digitales';
+String principal='En Illimanicode, nos apasiona llevar las ideas al siguiente nivel a través de la creación de páginas web sorprendentes y la sistematización de negocios innovadora. Somos más que un equipo de desarrollo; somos arquitectos digitales que construyen soluciones a medida para impulsar tu presencia en línea y optimizar tus procesos comerciales.';
+String titulo2='Creación de Páginas Web';
+String contenidoweb='Imagina una presencia en línea que no solo atrae, sino que cautiva a tu audiencia. Desde diseños modernos y funcionales hasta experiencias de usuario intuitivas, creamos sitios web que reflejan la esencia única de tu marca y generan impacto desde el primer clic';
+String titulo3='Sistematización de Negocios';
+String contenidonegocios='En un mundo empresarial centrado en la eficiencia, nos especializamos en la automatización de procesos, desde la gestión de clientes hasta la optimización de flujos de trabajo internos. Simplificamos tu operación para que puedas concentrarte en lo que realmente importa: hacer crecer tu negocio';
+String titulo4='Desarrollo de Aplicaciones Multiplataforma';
+String contenidomulti='No nos limitamos a la web; llevamos tus ideas a cualquier lugar con nuestras aplicaciones multiplataforma. Ya sea Android o Flutter, creamos experiencias de usuario consistentes y de alta calidad que conectan con tu audiencia en cualquier dispositivo.';
+String final1='Innovación Constante';
+String contenidofinal='En Illimanicode, nos mantenemos a la vanguardia de las últimas tendencias y tecnologías. No solo creamos soluciones, sino que también creamos experiencias digitales que destacan en un mundo en constante evolución.';
+String finalc ='Tu visión es nuestra inspiración. En Illimanicode, no solo creamos programas; damos vida a tus ideas. ¡Únete a nosotros en el viaje hacia la excelencia digital y multiplataforma!';

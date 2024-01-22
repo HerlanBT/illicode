@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'alertadiag.dart';
+import 'textos.dart';
 
 
 
 class Header extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+      bool aux=  (MediaQuery.of(context).size.width < 600); 
     return AppBar(
       backgroundColor: Colors.transparent,
     
@@ -21,7 +24,7 @@ class Header extends StatelessWidget {
         child: Row(
           children: [
             
-             Image.asset('logofijo.png',width: 60,height: 60,),
+             Image.asset('images/logofijo.png',width:aux? 50:200,height:aux? 50:100,),
             const SizedBox(width: 8),
             Expanded(
               child: HoverText(
@@ -38,6 +41,9 @@ class Header extends StatelessWidget {
               return PopupMenuButton<int>(
                 itemBuilder: (context) => [
                   PopupMenuItem(
+                    onTap: () {
+                        Navigator.pushReplacementNamed(context, '/');
+                    },
                     value: 1,
                     child: const Row(
                       children: [
@@ -48,6 +54,9 @@ class Header extends StatelessWidget {
                     ),
                   ),
                   PopupMenuItem(
+                    onTap: (){
+ DialogoAlerta(context, 'Nosotros', nosotros);
+                    },
                     value: 2,
                     child: const Row(
                       children: [
@@ -58,6 +67,9 @@ class Header extends StatelessWidget {
                     ),
                   ),
                   PopupMenuItem(
+                    onTap: () {
+                       Redes(context);
+                    },
                     value: 3,
                     child: const Row(
                       children: [
@@ -74,7 +86,9 @@ class Header extends StatelessWidget {
                 child: Row(
                   children: [
                     TextButton.icon(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/');
+                      },
                       icon: Icon(
                         Icons.home,
                         color: Colors.white,
@@ -87,14 +101,14 @@ class Header extends StatelessWidget {
                     IconText(
                       text: 'NOSOTROS',
                       Icono: Icons.people,
-                      titulo: 'hola',
-                      contenido: 'xxxxdddddd',
+                      titulo: 'NOSOTROS',
+                      contenido: nosotros,
                     ),
                     IconText(
                       text: 'CONTACTO',
                       Icono: Icons.phone,
                       contenido: '',
-                      titulo: '',
+                      titulo: 'CONTACTO',
                     )
                   ],
                 ),
@@ -127,7 +141,7 @@ class _HoverTextState extends State<HoverText> {
       onExit: (_) => _changeHover(false),
       child: GestureDetector(
         onTap: () {
-          // Puedes agregar acciones adicionales al hacer clic aquí
+    Navigator.pushReplacementNamed(context, '/');
           print('Text clicked!');
         },
         child: Text(
@@ -176,7 +190,7 @@ class _IconTextState extends State<IconText> {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: _isHovered ? Colors.white : Colors.transparent,
+            color: _isHovered ? Colors.white : Colors.black,
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: _isHovered ? Color.fromARGB(255, 21, 0, 77) : Colors.white,
@@ -184,18 +198,26 @@ class _IconTextState extends State<IconText> {
           ),
           child: TextButton.icon(
             onPressed: () {
-              DialogoAlerta(context, widget.titulo, widget.contenido);
+              print(widget.titulo);
+              if (widget.titulo=='CONTACTO') {
+                  Redes(context);
+                
+              } else {
+              
+                  DialogoAlerta(context, widget.titulo, widget.contenido);
+              }
+            
 
             },
             icon: Icon(
               widget.Icono,
-              color: _isHovered ? Color.fromARGB(255, 21, 0, 77) : Colors.black,
+              color: _isHovered ? Color.fromARGB(255, 21, 0, 77) : Colors.white,
             ),
             label: Text(
               widget.text,
               style: GoogleFonts.andika(
                 color:
-                    _isHovered ? Color.fromARGB(255, 21, 0, 77) : Colors.black,
+                    _isHovered ? Color.fromARGB(255, 21, 0, 77) : Colors.white,
               ),
             ),
           ),

@@ -15,7 +15,7 @@ class _ImageSliderState extends State<ImageSlider> {
   @override
   void initState() {
     super.initState();
-    _imageList = ['illibanner1.jpg', 'illibanner2.jpg', 'illibanner3.jpg'];
+    _imageList = ['images/illibanner1.jpg', 'images/illibanner2.jpg', 'images/illibanner3.jpg'];
     _currentPage = 0;
     _pageController = PageController(initialPage: _currentPage);
 

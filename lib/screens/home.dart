@@ -4,6 +4,7 @@ import '../widgets/bodys.dart';
 import '../widgets/footer.dart';
 import '../widgets/header.dart';
 import '../widgets/headerfont.dart';
+import '../widgets/tarjeta2.dart';
 import '../widgets/textos.dart';
 
 class HomePage extends StatefulWidget {
@@ -40,20 +41,34 @@ class _HomePageState extends State<HomePage> {
                       Positioned(top: 0, left: 0, right: 0, child: Header())
                     ],
                   ),
-                  Body1('principal.jpg', titulo1, principal, 'illi1.jpg'),
+                  Body1('images/principal.jpg', titulo1, principal, 'images/illi1.jpg'),
                   SizedBox(
                     height: 30,
                   ),
-                  Body2('illi7.jpg', titulo2, contenidoweb, 'web4.png'),
+                  Body2('images/illi7.jpg', titulo2, contenidoweb, 'images/web4.png'),
                   SizedBox(
                     height: 30,
                   ),
-                  Body1('sisnego.jpg', titulo3, contenidonegocios, 'illi3.jpg'),
+                  Body1('images/sisnego.jpg', titulo3, contenidonegocios, 'images/illi3.jpg'),
                   SizedBox(
                     height: 30,
                   ),
-                  Body2('illi11.jpg', titulo4, contenidomulti, 'web3.jpg'),
+                  Body2('images/illi11.jpg', titulo4, contenidomulti, 'images/web3.jpg'),
                   SizedBox(
+                    height: 30,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Tarjeta2(contenido: contenidofinal,),
+                        SizedBox(width: 20,),
+                        Tarjeta2(contenido: finalc,),
+                      ],
+                    ),
+                  ),
+                       SizedBox(
                     height: 30,
                   ),
                   Footer(),

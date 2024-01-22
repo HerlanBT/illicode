@@ -5,17 +5,17 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class Tarjeta extends StatefulWidget {
-  final String titulo;
+class Tarjeta2 extends StatefulWidget {
+
   final String contenido;
 
-  Tarjeta({required this.titulo, required this.contenido});
+  Tarjeta2({ required this.contenido});
 
   @override
-  _TarjetaState createState() => _TarjetaState();
+  _Tarjeta2State createState() => _Tarjeta2State();
 }
 
-class _TarjetaState extends State<Tarjeta> {
+class _Tarjeta2State extends State<Tarjeta2> {
   bool isHovered = false;
   late Timer colorTimer;
   late Color borderColor;
@@ -53,14 +53,14 @@ class _TarjetaState extends State<Tarjeta> {
         margin: EdgeInsets.all(10.0),
         child: AnimatedContainer(
           duration: Duration(milliseconds: 200),
-          height: isHovered ? 220.0 : 210.0,
-          width: isHovered ? 310.0 : 290.0,
+          height: isHovered ? 120.0 : 100.0,
+          width: isHovered ? 310.0 : 300.0,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.centerRight,
               colors: [
-                       Color.fromARGB(255, 2, 1, 22),
+                Color.fromARGB(255, 2, 1, 22),
                 Color.fromARGB(255, 0, 0, 0),
               ],
             ),
@@ -74,14 +74,7 @@ class _TarjetaState extends State<Tarjeta> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(
-                  widget.titulo,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+                
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.symmetric(

@@ -121,7 +121,6 @@ class Header extends StatelessWidget {
   }
 }
 
-
 class HoverText extends StatefulWidget {
   final String text;
 
@@ -131,35 +130,57 @@ class HoverText extends StatefulWidget {
   _HoverTextState createState() => _HoverTextState();
 }
 
-class _HoverTextState extends State<HoverText> {
+class _HoverTextState extends State<HoverText>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<Color?> _colorAnimation;
   bool _isHovered = false;
 
   @override
+  void initState() {
+    super.initState();
+
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 300),
+    );
+
+    _colorAnimation = ColorTween(
+      begin: Colors.black,
+      end: Colors.red,
+    ).animate(_animationController);
+
+    _animationController.repeat(reverse: true);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => _changeHover(true),
-      onExit: (_) => _changeHover(false),
-      child: GestureDetector(
-        onTap: () {
-    Navigator.pushReplacementNamed(context, '/');
-          print('Text clicked!');
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushReplacementNamed(context, '/');
+        print('Text clicked!');
+      },
+      child: AnimatedBuilder(
+        animation: _colorAnimation,
+        builder: (context, child) {
+          return Text(
+            widget.text,
+            style: GoogleFonts.andika(
+              color: _colorAnimation.value,
+              fontSize: _isHovered ? 50.0 : 40.0,
+              fontWeight: FontWeight.bold,
+              
+            ),
+          );
         },
-        child: Text(
-          widget.text,
-          style: GoogleFonts.andika(
-            color: _isHovered ? Colors.black : Colors.black,
-            fontSize: _isHovered ? 50.0 : 40.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
       ),
     );
   }
 
-  void _changeHover(bool value) {
-    setState(() {
-      _isHovered = value;
-    });
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 }
 

@@ -1,32 +1,40 @@
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
+
 import 'package:flutter/material.dart';
-// import 'package:url_launcher/url_launcher.dart';
-// import 'package:mailer/mailer.dart';
-// import 'package:mailer/smtp_server.dart';
+import 'package:http/http.dart' as http;
 
 class GmailDialog extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController bodyController = TextEditingController();
 
-  // void _sendEmail(BuildContext context) async {
-  //   final String receiverEmail = 'ballon777herlanturpo@gmail.com';
-  //   final String subject = 'Asunto del correo';
-  //   final String body = bodyController.text;
+  Future<void> _sendEmail(BuildContext context) async {
+    final String url = 'https://formspree.io/f/xpzvqqre'; // Reemplaza con tu URL de Formspree
 
-  //   final smtpServer = gmail('YOUR_EMAIL@gmail.com', 'YOUR_PASSWORD');
+    final Map<String, String> formData = {
+      'email': emailController.text,
+      'message': bodyController.text,
+    };
 
-  //   final message = Message()
-  //     ..from = Address('YOUR_EMAIL@gmail.com', 'Your Name')
-  //     ..recipients.add(receiverEmail)
-  //     ..subject = subject
-  //     ..text = body;
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+        },
+      );
 
-  //   try {
-  //     await send(message, smtpServer);
-  //     print('Correo enviado con éxito');
-  //   } catch (e) {
-  //     print('Error al enviar el correo: $e');
-  //   }
-  // }
+      if (response.statusCode == 200) {
+        print('Correo enviado con éxito');
+        // Puedes manejar la respuesta aquí si es necesario
+      } else {
+        print('Error al enviar el correo. Código de estado: ${response.statusCode}');
+        // Puedes manejar el error aquí si es necesario
+      }
+    } catch (e) {
+      print('Error al enviar el correo: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +62,24 @@ class GmailDialog extends StatelessWidget {
           child: Text('Cancelar'),
         ),
         TextButton(
-          onPressed: () {
-       //     _sendEmail(context);
+          onPressed: () async {
+            await _sendEmail(context);
+           showDialog(
+              context: context,
+              useSafeArea: true,
+              barrierDismissible: true,
+              builder: (context) {
+              return AlertDialog(
+                 title: Icon(Icons.check_circle,color: Colors.green,),
+                 content: Text('Enviado con Exito!',style:TextStyle(color: Colors.green,fontWeight: FontWeight.bold,),textAlign: TextAlign.center, ),
+                 actions: [TextButton(onPressed: (){
+                  Navigator.pop(context);
+                 }, child: const Text('Cerrar'))],
+                 );
+               },
+             );
           },
-          child: Text('Enviar por Gmail'),
+          child: Text('Enviar por Formspree'),
         ),
       ],
     );

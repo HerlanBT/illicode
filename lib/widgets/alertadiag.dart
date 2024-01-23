@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../services/email.dart';
-import '../services/whatsapp.dart';
+// import '../services/whatsapp.dart';
 
 Future<void> DialogoAlerta(
     BuildContext context, String title, String content) async {
@@ -78,21 +78,21 @@ Future<void> Redes(BuildContext context) async {
                 child: const Text('Tiktok'),
               ),
                SizedBox(height: 20,),
-              FilledButton(
-                onPressed: () async {
-                  await  showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return WhatsAppDialog();
-                },
-              );
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Color.fromARGB(255, 1, 104, 32), // Cambiar el color de fondo aquí
-                ),
-                child: const Text('Whatsapp'),
-              ),
-               SizedBox(height: 20,),
+              // FilledButton(
+              //   onPressed: () async {
+              //     await  showDialog(
+              //   context: context,
+              //   builder: (BuildContext context) {
+              //     return WhatsAppDialog();
+              //   },
+              // );
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     primary: Color.fromARGB(255, 1, 104, 32), // Cambiar el color de fondo aquí
+              //   ),
+              //   child: const Text('Whatsapp'),
+              // ),
+              //  SizedBox(height: 20,),
               FilledButton(
                 onPressed: () async {
                   await  showDialog(
